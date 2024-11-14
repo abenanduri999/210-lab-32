@@ -28,15 +28,22 @@ int main()
                 line.push_back(Car()); 
                 Car& lastElement = line.back(); 
                 cout<<"Time: "<<i<<" Operation: Joined Lane: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
-                <<"("<<lastElement.getTransponder()<<")]";
+                <<" ("<<lastElement.getTransponder()<<")]"<<endl;
+                cout<<"Queue: "<<endl;
+                for(int k = 0; k < line.size(); k++ )
+                {
+                    line[k].print();
+                }
             }
         else
             {
-                line.pop_front(); 
                 Car& firstElement = line.front(); 
+                cout<<"Time: "<<i<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
+                <<" ("<<firstElement.getTransponder()<<")]"<<endl;
+                line.pop_front(); 
                     
             }
-        
+        i++; 
 
     } while(!line.empty()); 
 
