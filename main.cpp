@@ -19,17 +19,26 @@ int main()
 
     srand(time(0)); 
     int i = 1; 
-    /*do{
+    do{
 
         int prob = rand() % 100 + 1; 
 
         if(prob <= 55 ) 
             {
-
+                line.push_back(Car()); 
+                Car& lastElement = line.back(); 
+                cout<<"Time: "<<i<<" Operation: Joined Lane: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
+                <<"("<<lastElement.getTransponder()<<")]";
+            }
+        else
+            {
+                line.pop_front(); 
+                Car& firstElement = line.front(); 
+                    
             }
         
 
-    } while(!line.empty()); */
+    } while(!line.empty()); 
 
 
 
