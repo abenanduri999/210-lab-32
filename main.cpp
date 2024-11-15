@@ -28,27 +28,45 @@ int main()
 
     for(int i = 0; i < TIME_PERIODS; i++)
     {
-        int prob = rand() % 100 + 1; 
+        
+        cout<<"Time "<<i + 1<<":"<<endl;
         for(int j = 0; j < LANES; j++)
         {
+            int prob = rand() % 100 + 1; 
             if(prob <= 46)
             { 
                 Car& firstElement = lines[j].front();
-                cout<<"Time: "<<i + 1<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
+                cout<<"Lane: "<<j + 1<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
                 <<" ("<<firstElement.getTransponder()<<")]"<<endl;
                 lines[j].pop_front(); 
             }
-            if(prob <= 85)
+            else if( prob > 46 && prob < 86 )
             {
                 lines[j].push_back(Car());
                 Car& lastElement = lines[j].back(); 
-                cout<<"Time: "<<i + 1<<" Operation: Joined Lane: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
+                cout<<"Lane: "<<j + 1<<" Operation: Joined Lane: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
                 <<" ("<<lastElement.getTransponder()<<")]"<<endl;
             }
-            else
+            else if(prob > 85 && prob < 101) 
             {
                 Car& lastElement = lines[j].back();
+                lines[j].pop_back();
+                int swap = rand() % LANES;
                 
+                if(swap == j)
+                {
+                    do{
+                        swap = rand() % LANES;
+                    }while(swap == j);
+                }
+                
+                lines[swap].push_back(lastElement);
+                cout<<"Lane: "<<j + 1<<" Operation: Switched: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
+                <<" ("<<lastElement.getTransponder()<<")]"<<endl;
+            }
+            if(lines[j].empty())
+            {
+                cout<<"Empty line"<<endl;
             }
         }
     }
