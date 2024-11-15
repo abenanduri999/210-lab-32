@@ -12,11 +12,15 @@ int main()
 {
     deque<Car> lines[LANES]; 
 
+    cout<<"Initial Queue:"<<endl; 
     for(int i = 0; i < LANES; i++) 
     {
+        cout<<"\tLane "<<i + 1<<":"<<endl;
         for(int j = 0; j < CARS; j++)
         {
             lines[i].push_back(Car()); 
+            cout<<"\t\t";
+            lines[i][j].print();
         }
     }
    /* deque<Car> line; 
