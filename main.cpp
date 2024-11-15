@@ -1,14 +1,19 @@
 #include<iostream>
 #include<deque>
+#include<array>
 #include "Car.h"
 
 using namespace std; 
 
 const int CARS = 2;
+const int LANES = 4;
 
 int main() 
 {
-    deque<Car> line; 
+    deque<Car> lines[LANES]; 
+    
+
+   /* deque<Car> line; 
 
     cout<<"Initial Queue:"<<endl; 
     for(int i = 0; i < CARS; i++)
@@ -63,7 +68,7 @@ int main()
         cout<<"Queue:\n";
         cout<<"\tEmpty"<<endl;
     }
-
+    */
 
 
 
