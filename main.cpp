@@ -5,8 +5,8 @@
 
 using namespace std; 
 
-const int CARS = 2;
-const int LANES = 4;
+const int CARS = 2; const int TIME_PERIODS = 20;
+const int LANES = 4; 
 
 int main() 
 {
@@ -21,6 +21,27 @@ int main()
             lines[i].push_back(Car()); 
             cout<<"\t\t";
             lines[i][j].print();
+        }
+    }
+
+    srand(time(0));
+
+    for(int i = 0; i < TIME_PERIODS; i++)
+    {
+        int prob = rand() % 100 + 1; 
+        for(int j = 0; j < LANES; j++)
+        {
+            if(prob <= 46)
+            { 
+                Car& firstElement = lines[j].front();
+                cout<<"Time: "<<i<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
+                <<" ("<<firstElement.getTransponder()<<")]"<<endl;
+                lines[j].pop_front(); 
+            }
+            if(prob > 46 && prob <= 85)
+            {
+                lines[j].push_back(Car());
+            }
         }
     }
    /* deque<Car> line; 
