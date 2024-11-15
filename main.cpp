@@ -34,13 +34,21 @@ int main()
             if(prob <= 46)
             { 
                 Car& firstElement = lines[j].front();
-                cout<<"Time: "<<i<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
+                cout<<"Time: "<<i + 1<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
                 <<" ("<<firstElement.getTransponder()<<")]"<<endl;
                 lines[j].pop_front(); 
             }
-            if(prob > 46 && prob <= 85)
+            if(prob <= 85)
             {
                 lines[j].push_back(Car());
+                Car& lastElement = lines[j].back(); 
+                cout<<"Time: "<<i + 1<<" Operation: Joined Lane: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
+                <<" ("<<lastElement.getTransponder()<<")]"<<endl;
+            }
+            else
+            {
+                Car& lastElement = lines[j].back();
+                
             }
         }
     }
