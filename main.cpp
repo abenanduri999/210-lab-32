@@ -11,8 +11,14 @@ const int LANES = 4;
 int main() 
 {
     deque<Car> lines[LANES]; 
-    
 
+    for(int i = 0; i < LANES; i++) 
+    {
+        for(int j = 0; j < CARS; j++)
+        {
+            lines[i].push_back(Car()); 
+        }
+    }
    /* deque<Car> line; 
 
     cout<<"Initial Queue:"<<endl; 
