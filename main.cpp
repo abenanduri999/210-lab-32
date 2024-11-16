@@ -33,7 +33,15 @@ int main()
         for(int j = 0; j < LANES; j++)
         {
             int prob = rand() % 100 + 1; 
-            if(prob <= 46)
+            if(lines[j].empty())
+            {
+                int probemp = rand() % 100 + 1; 
+                if(probemp <= 50)
+                {
+                    lines[j].push_back(Car()); 
+                }
+            }
+            else if(prob <= 46)
             { 
                 Car& firstElement = lines[j].front();
                 cout<<"Lane: "<<j + 1<<" Operation: Car Paid: ["<<firstElement.getYear()<<" "<<firstElement.getMake()
@@ -63,12 +71,19 @@ int main()
                 lines[swap].push_back(lastElement);
                 cout<<"Lane: "<<j + 1<<" Operation: Switched: ["<<lastElement.getYear()<<" "<<lastElement.getMake()
                 <<" ("<<lastElement.getTransponder()<<")]"<<endl;
-            }
-            if(lines[j].empty())
-            {
-                cout<<"Empty line"<<endl;
-            }
+            }    
         }
+            
+            for(int k = 0; k < LANES; k++)
+            {
+                cout<<"Lane "<<k + 1<<" Queue:"<<endl; 
+                for (int l = 0; l < lines[k].size(); l++)
+                {
+                    cout<<"\t\t";
+                    lines[k][l].print();
+                }
+                cout<<endl;
+            }
     }
    /* deque<Car> line; 
 
